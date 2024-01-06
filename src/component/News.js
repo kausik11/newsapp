@@ -162,13 +162,13 @@ export class News extends Component {
   render() {
     return (
       <div className='container my-3'>
-        <h2 style={{textAlign:"center"}}>NewsApp Top Headlines</h2>
+        <h2 style={{textAlign:"center"}}>NewsApp Top Headlines {this.props.category}</h2>
        {this.state.loading && <Spinner />}
         
         <div className='row'>
         {!this.state.loading && this.state.articles.map((item)=>{
               return <div className='col-md-4' key={item.url}>
-              <NewsItem  title={item.title ? item.title.slice(0,45) : " "} description={item.description ?  item.description.slice(0,88) : " "} Imgurl={item.urlToImage} newsurl={item.url}/>
+              <NewsItem  title={item.title ? item.title.slice(0,45) : " "} description={item.description ?  item.description.slice(0,88) : " "} Imgurl={item.urlToImage} newsurl={item.url} publish={item.publishedAt} source={item.source.name}/>
               </div>
         })}            
         </div>
