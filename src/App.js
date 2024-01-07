@@ -1,8 +1,9 @@
 import './App.css';
-import React, { Component } from 'react';
+import React from 'react';
 import Navbar from './component/Navbar';
 import News from './component/News';
 import LoadingBar from 'react-top-loading-bar'
+import { useState } from 'react';
 // import NewsItem from './component/NewsItem';
 // import {
 //   BrowserRouter as Router,
@@ -14,25 +15,30 @@ import LoadingBar from 'react-top-loading-bar'
 
 
 
-export default class App extends Component {
+function App () {
 
-  state = {
-    progress : 0}
-  
-  setProgress= (value)=>{
-    this.setState({progress : value})
-  }
+  const[progress, willsetProgress ] = useState(0);
 
-  render() {
+ 
+ 
+
+  const setProgress = (value)=>{
+    return(
+      willsetProgress(value)
+    )
+    
+};
+
+ 
     return (
       <div>
        
         <Navbar />
         <LoadingBar
         color='#f11946'
-        progress={this.state.progress}
+        progress={progress}
       />
-        <News pagesize={6} country={"in"} category="General" bar = {this.setProgress}/>
+        <News pagesize={6} country={"in"} category="General" bar = {setProgress}/>
 
         {/*  <Router> <Switch>
           <Route path="/"><News pagesize={6} country={"in"} category="General" /></Route>
@@ -42,5 +48,6 @@ export default class App extends Component {
         
       </div>
     )
-  }
+  
 }
+export default App;
