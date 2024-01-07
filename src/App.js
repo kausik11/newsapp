@@ -2,6 +2,7 @@ import './App.css';
 import React, { Component } from 'react';
 import Navbar from './component/Navbar';
 import News from './component/News';
+import LoadingBar from 'react-top-loading-bar'
 // import NewsItem from './component/NewsItem';
 // import {
 //   BrowserRouter as Router,
@@ -13,14 +14,25 @@ import News from './component/News';
 
 
 
-
 export default class App extends Component {
+
+  state = {
+    progress : 0}
+  
+  setProgress= (value)=>{
+    this.setState({progress : value})
+  }
+
   render() {
     return (
       <div>
        
         <Navbar />
-        <News pagesize={6} country={"in"} category="General" />
+        <LoadingBar
+        color='#f11946'
+        progress={this.state.progress}
+      />
+        <News pagesize={6} country={"in"} category="General" bar = {this.setProgress}/>
 
         {/*  <Router> <Switch>
           <Route path="/"><News pagesize={6} country={"in"} category="General" /></Route>

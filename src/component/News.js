@@ -133,14 +133,17 @@ export class News extends Component {
   };
 
      async UpdateNews(){
+      this.props.bar(10);
       let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=7ec8535c8a56486abccd4927ba1f1938&page=${this.state.page}&pageSize=${this.props.pagesize}`;
       this.setState({loading : true});
       let data = await fetch(url);
+      this.props.bar(40);
       let parsedata = await data.json();
       this.setState({articles: parsedata.articles, totalResults: parsedata.totalResults, loading : false, page:this.state.page+1});
       console.log(this.state.page);
       console.log(this.state.articles.length);
       console.log(parsedata)
+      this.props.bar(100)
      };
      
     
@@ -176,7 +179,6 @@ export class News extends Component {
     //      })
     // }
    fetchMoreData = async()=>{
-    this.setState({page : this.state.page+1});
     let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=7ec8535c8a56486abccd4927ba1f1938&page=${this.state.page}&pageSize=${this.props.pagesize}`;
       this.setState({loading : true});
       let data = await fetch(url);
@@ -191,6 +193,8 @@ export class News extends Component {
 
   render() {
     return (
+
+      
       <div className='container my-3'>
         <h2 style={{textAlign:"center", margin:"5px"}}>NewsApp Top Headlines {this.props.category}</h2>
        {/* {this.state.loading && <Spinner />} */}
