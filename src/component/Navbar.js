@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
+
 
 export class Navbar extends Component {
   static propTypes = {
@@ -11,7 +11,7 @@ export class Navbar extends Component {
       <div>
         <nav className="navbar navbar-dark navbar-expand-lg bg-dark">
   <div className="container-fluid">
-    <a className="navbar-brand" href="#">NewsApp</a>
+    <a className="navbar-brand">NewsApp</a>
     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span className="navbar-toggler-icon"></span>
     </button>
